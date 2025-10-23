@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Educational Institutions – Silvia, Cauca</title>
+
+  <!-- Fuentes y librerías -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <!-- Estilos globales y locales -->
+  <link rel="stylesheet" href="/css/education.css">
+</head>
+<body>
+
+  <!-- 🌄 NAVBAR -->
+  <header class="navbar-pro">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <i class="fas fa-mountain"></i> SIL<span class="accent-text">TOUR</span>
+      </a>
+      <nav class="nav-links-pro">
+        <ul>
+          <li><a href="index.html">Home</a></li> 
+          <li><a href="tourism.html">Attractions</a></li>
+          <li><a href="health.html">Health</a></li>
+          <li><a href="education.html" class="active">Education</a></li>
+          <li><a href="restaurants.html">Restaurants</a></li>
+          <li><a href="sports.html">Recreation</a></li>
+        </ul>
+      </nav>
+      <button class="hamburger-menu" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- 🎓 HERO SECTION -->
+  <header class="hero-header">
+    <h1>Educational Institutions of Silvia, Cauca</h1>
+    <p>Discover the academic institutions that nurture the cultural and intellectual growth of Silvia.</p>
+  </header>
+
+  <!-- 📚 MAIN CONTENT -->
+  <main class="container">
+    <p class="instruction-text">Click on any institution to learn more about its programs, history, and community involvement.</p>
+
+    <ul id="educationList" class="education-grid">
+      <!-- Misak University -->
+      <li class="education-card" data-modal-target="#modal1" tabindex="0">
+        <img src="/img_education/misak.png" alt="Misak University" loading="lazy">
+        <div class="card-info">
+          <h3>Misak University</h3>
+          <p class="tagline">Community-based higher education inspired by ancestral knowledge.</p>
+          <div class="tags"><span>#Indigenous</span><span>#HigherEd</span><span>#CulturalIdentity</span></div>
+        </div>
+      </li>
+
+      <!-- Ezequiel Hurtado -->
+      <li class="education-card" data-modal-target="#modal2" tabindex="0">
+        <img src="/img_education/hurtado.png" alt="Ezequiel Hurtado Educational Institution" loading="lazy">
+        <div class="card-info">
+          <h3>Ezequiel Hurtado Institution</h3>
+          <p class="tagline">Promoting inclusive education for rural and urban youth.</p>
+          <div class="tags"><span>#Secondary</span><span>#Inclusive</span><span>#PublicEducation</span></div>
+        </div>
+      </li>
+
+      <!-- Francisco José de Caldas -->
+      <li class="education-card" data-modal-target="#modal3" tabindex="0">
+        <img src="/img_education/francisco.png" alt="Francisco José de Caldas Agricultural School" loading="lazy">
+        <div class="card-info">
+          <h3>Francisco José de Caldas Agricultural Technical School</h3>
+          <p class="tagline">Agricultural innovation for local and environmental development.</p>
+          <div class="tags"><span>#Agriculture</span><span>#Technical</span><span>#Sustainability</span></div>
+        </div>
+      </li>
+    </ul>
+  </main>
+
+  <!-- 📘 MODALES -->
+  <div id="modal1" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal1-title">
+    <div class="modal-content">
+      <button class="close-btn" data-close-modal>×</button>
+      <img src="/img_education/misak.png" alt="Misak University">
+      <h2 id="modal1-title">Misak University (Ala Kusreik Ya)</h2>
+      <p>
+        This university represents the self-determination of the Misak people through education.
+        With support from the Ministry of Education and community leaders, it develops programs 
+        that strengthen indigenous identity and intercultural dialogue.
+      </p>
+      <p><strong><i class="fas fa-map-marker-alt"></i> Location:</strong> Resguardo Misak, Silvia, Cauca</p>
+      <p><strong><i class="fas fa-building"></i> Type:</strong> Community Indigenous University</p>
+      <a href="https://maps.google.com/?q=Universidad+Misak+Silvia+Cauca" target="_blank" class="btn-map">
+        <i class="fas fa-directions"></i> Get Directions
+      </a>
+    </div>
+  </div>
+
+  <div id="modal2" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal2-title">
+    <div class="modal-content">
+      <button class="close-btn" data-close-modal>×</button>
+      <img src="/img_education/hurtado.png" alt="Ezequiel Hurtado Educational Institution">
+      <h2 id="modal2-title">Ezequiel Hurtado Educational Institution</h2>
+      <p>
+        A public educational center committed to academic excellence and human values.
+        It offers preschool, primary, and secondary levels, emphasizing inclusion, technology, and citizenship.
+      </p>
+      <p><strong><i class="fas fa-map-marker-alt"></i> Address:</strong> Calle 7 #3-20, Silvia, Cauca</p>
+      <p><strong><i class="fas fa-phone-alt"></i> Contact:</strong> +57 (2) XXX XXXX</p>
+      <a href="https://maps.google.com/?q=Institucion+Educativa+Ezequiel+Hurtado+Silvia" target="_blank" class="btn-map">
+        <i class="fas fa-directions"></i> Get Directions
+      </a>
+    </div>
+  </div>
+
+  <div id="modal3" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal3-title">
+    <div class="modal-content">
+      <button class="close-btn" data-close-modal>×</button>
+      <img src="/img_education/francisco.png" alt="Francisco José de Caldas Agricultural Technical School">
+      <h2 id="modal3-title">Francisco José de Caldas Agricultural Technical School</h2>
+      <p>
+        An educational institution focused on agricultural science, environmental stewardship, and
+        technical development. It prepares students for productive rural life and higher education.
+      </p>
+      <p><strong><i class="fas fa-map-marker-alt"></i> Address:</strong> Vereda El Ortigal, Silvia, Cauca</p>
+      <p><strong><i class="fas fa-clock"></i> Hours:</strong> Mon–Fri: 7:00 AM – 4:00 PM</p>
+      <a href="https://maps.google.com/?q=Francisco+Jose+de+Caldas+Silvia+Cauca" target="_blank" class="btn-map">
+        <i class="fas fa-directions"></i> Get Directions
+      </a>
+    </div>
+  </div>
+
+  <!-- 🏔️ FOOTER -->
+  <footer class="footer-pro">
+    <div class="container footer-grid">
+      
+      <div class="footer-col branding">
+        <a href="index.html" class="logo-footer">
+          <i class="fas fa-mountain"></i> SILVIA CAUCA
+        </a>
+        <p>Gateway to the Andes. Municipality of Silvia, Cauca.</p>
+        <div class="contact-info">
+          <p><i class="fas fa-envelope"></i> contactenos@silvia-cauca.gov.co</p>
+          <p><i class="fas fa-phone-alt"></i> Mayor's Office: [+57 XXX XXXX]</p>
+        </div>
+      </div>
+
+      <div class="footer-col navigation">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="tourism.html"><i class="fas fa-arrow-right"></i> Tourist Attractions</a></li>
+          <li><a href="education.html"><i class="fas fa-arrow-right"></i> Education Network</a></li>
+          <li><a href="restaurants.html"><i class="fas fa-arrow-right"></i> Restaurants & Lodging</a></li>
+          <li><a href="sports.html"><i class="fas fa-arrow-right"></i> Sports & Recreation</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col legal">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="#"><i class="fas fa-arrow-right"></i> Site Map</a></li>
+          <li><a href="#"><i class="fas fa-arrow-right"></i> Privacy Policy</a></li>
+          <li><a href="#"><i class="fas fa-arrow-right"></i> Terms of Use</a></li>
+          <li><a href="health.html"><i class="fas fa-arrow-right"></i> E.S.E. Centro 1 (Health)</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col social">
+        <h4>Connect</h4>
+        <div class="social-links-pro">
+          <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom-pro">
+      <div class="container">
+        &copy; 2025 Silvia, Cauca. All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="/js/education.js"></script>
+</body>
+</html>

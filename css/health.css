@@ -1,0 +1,363 @@
+/* ============================================================
+SILVIA, CAUCA - Restaurants Guide (Modern & Clean)
+============================================================ */
+
+/* 🎨 VARIABLES */
+:root {
+  --primary: #305c4c;
+  --accent: #d8b36a;
+  --text: #222;
+  --muted: #666;
+  --bg: #f7f7f7;
+  --card-bg: #fff;
+  --radius: 14px;
+  --shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+  font-family: "Poppins", sans-serif;
+}
+
+/* BASE */
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+}
+
+/* ===========================
+   NAVBAR
+=========================== */
+.navbar-pro {
+  background: #fff;
+  border-bottom: 1px solid #e0e0e0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-pro .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+}
+
+.logo {
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 1.3rem;
+  text-decoration: none;
+}
+
+.accent-text {
+  color: var(--accent);
+}
+
+.nav-links-pro ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+.nav-links-pro a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links-pro a:hover {
+  color: var(--primary);
+}
+
+.btn-cta {
+  background: var(--primary);
+  color: #fff !important;
+  padding: 8px 15px;
+  border-radius: var(--radius);
+  transition: var(--transition);
+}
+
+.btn-cta:hover {
+  background: var(--accent);
+}
+
+/* ===========================
+   HOSPITAL HERO
+=========================== */
+.hero-header {
+  background: linear-gradient(135deg, #305c4c 0%, #203a30 100%);
+  color: white;
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.hero-header h1 {
+  font-size: 2.3rem;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+
+.hero-header p {
+  color: #e6e6e6;
+  font-size: 1.1rem;
+}
+
+/* ===========================
+   HOSPITAL CARDS GRID
+=========================== */
+.instruction-text {
+  text-align: center;
+  margin: 40px auto 30px;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.restaurant-grid { /* reutilizamos grid para hospitales */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  padding: 0 30px 60px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.restaurant-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.restaurant-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.restaurant-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-info {
+  padding: 18px;
+}
+
+.card-info h3 {
+  color: var(--primary);
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+
+.tagline {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+/* ===========================
+   HOSPITAL PAGES
+=========================== */
+.milagrosa-section,
+.dominga-section,
+.cta-misak-section {
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.milagrosa-title,
+.dominga-title,
+.cta-misak-section h1 {
+  color: var(--primary);
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.milagrosa-divider,
+.dominga-divider,
+.cta-divider {
+  width: 80px;
+  height: 3px;
+  background-color: var(--accent);
+  margin-bottom: 25px;
+  border: none;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 25px;
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.back-link i {
+  margin-right: 8px;
+}
+
+.back-link:hover {
+  color: var(--accent);
+}
+
+.milagrosa-content,
+.dominga-content,
+.cta-misak-content {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.milagrosa-image,
+.dominga-image,
+.cta-misak-img {
+  flex: 1 1 300px;
+}
+
+.milagrosa-image img,
+.dominga-image img,
+.cta-misak-img img {
+  width: 100%;
+  border-radius: var(--radius);
+  object-fit: cover;
+}
+
+.milagrosa-info,
+.dominga-info,
+.cta-misak-info {
+  flex: 2 1 400px;
+}
+
+.milagrosa-info p,
+.dominga-info p,
+.cta-misak-info p,
+.milagrosa-description,
+.dominga-description,
+.cta-misak-description p {
+  line-height: 1.6;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
+.milagrosa-info ul,
+.dominga-info ul {
+  padding-left: 20px;
+  margin-bottom: 12px;
+}
+
+.milagrosa-map,
+.dominga-map,
+.cta-misak-map {
+  margin-top: 25px;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.milagrosa-map iframe,
+.dominga-map iframe,
+.cta-misak-map iframe {
+  width: 100%;
+  height: 450px;
+  border: 0;
+  border-radius: var(--radius);
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+.footer-pro {
+  background: #1c1c1c;
+  color: #ccc;
+  padding-top: 50px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 40px;
+  padding: 0 30px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.footer-col h4 {
+  color: var(--accent);
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col a {
+  color: #aaa;
+  text-decoration: none;
+  line-height: 1.8;
+  display: flex;
+  align-items: center;
+  transition: color 0.3s;
+}
+
+.footer-col a:hover {
+  color: var(--accent);
+}
+
+.logo-footer {
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: #fff;
+  text-decoration: none;
+}
+
+.social-links-pro a {
+  display: inline-block;
+  background: rgba(255,255,255,0.1);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 38px;
+  color: #fff;
+  margin-right: 8px;
+  transition: background 0.3s;
+}
+
+.social-links-pro a:hover {
+  background: var(--accent);
+  color: #000;
+}
+
+.footer-bottom-pro {
+  background: #111;
+  text-align: center;
+  padding: 15px 0;
+  font-size: 0.85rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+@media (max-width: 768px) {
+  .restaurant-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  .hero-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .milagrosa-content,
+  .dominga-content,
+  .cta-misak-content {
+    flex-direction: column;
+  }
+}

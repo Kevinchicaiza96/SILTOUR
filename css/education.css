@@ -1,0 +1,361 @@
+/* ============================================================
+SILVIA, CAUCA - Education Institutions (Modern & Consistent)
+============================================================ */
+
+/* 🎨 VARIABLES */
+:root {
+  --primary: #305c4c; /* Verde institucional */
+  --accent: #d8b36a;  /* Dorado elegante */
+  --text: #222;
+  --muted: #666;
+  --bg: #f7f7f7;
+  --card-bg: #fff;
+  --radius: 14px;
+  --shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ===========================
+   BASE
+=========================== */
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+}
+
+/* ===========================
+   NAVBAR
+=========================== */
+.navbar-pro {
+  background: #fff;
+  border-bottom: 1px solid #e0e0e0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-pro .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+}
+
+.logo {
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 1.3rem;
+  text-decoration: none;
+}
+
+.accent-text {
+  color: var(--accent);
+}
+
+.nav-links-pro ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+.nav-links-pro a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links-pro a:hover {
+  color: var(--primary);
+}
+
+.btn-cta {
+  background: var(--primary);
+  color: #fff !important;
+  padding: 8px 15px;
+  border-radius: var(--radius);
+  transition: var(--transition);
+}
+
+.btn-cta:hover {
+  background: var(--accent);
+}
+
+/* ===========================
+   HERO
+=========================== */
+.hero-header {
+  background: linear-gradient(135deg, #305c4c 0%, #203a30 100%);
+  color: white;
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.hero-header h1 {
+  font-size: 2.3rem;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+
+.hero-header p {
+  color: #e6e6e6;
+  font-size: 1.1rem;
+}
+
+/* ===========================
+   EDUCATION GRID
+=========================== */
+.instruction-text {
+  text-align: center;
+  margin: 40px auto 30px;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.education-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  gap: 25px;
+  padding: 0 30px 60px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.education-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.education-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.education-card img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+}
+
+.card-info {
+  padding: 18px;
+}
+
+.card-info h3 {
+  color: var(--primary);
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+
+.tagline {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tags span {
+  background: var(--accent);
+  color: #fff;
+  border-radius: 10px;
+  padding: 4px 10px;
+  font-size: 0.75rem;
+}
+
+/* ===========================
+   MODALS (CLEAN, PRO)
+=========================== */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  z-index: 2000;
+}
+
+.modal.active {
+  display: flex;
+  animation: fadeIn 0.25s ease-in-out;
+}
+
+.modal-content {
+  background: #fff;
+  color: var(--text);
+  border-radius: var(--radius);
+  max-width: 700px;
+  width: 100%;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+  animation: slideUp 0.3s ease;
+}
+
+.modal-content img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.modal-content h2 {
+  margin: 20px 20px 10px;
+  color: var(--primary);
+  font-size: 1.4rem;
+}
+
+.modal-content p {
+  margin: 10px 20px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.btn-map {
+  display: inline-block;
+  margin: 15px 20px 25px;
+  background: var(--primary);
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: var(--radius);
+  transition: var(--transition);
+}
+
+.btn-map:hover {
+  background: var(--accent);
+}
+
+/* Botón de cierre */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  font-size: 1.6rem;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.close-btn:hover {
+  color: var(--primary);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+.footer-pro {
+  background: #1c1c1c;
+  color: #ccc;
+  padding-top: 50px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 40px;
+  padding: 0 30px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.footer-col h4 {
+  color: var(--accent);
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col a {
+  color: #aaa;
+  text-decoration: none;
+  line-height: 1.8;
+  display: flex;
+  align-items: center;
+  transition: color 0.3s;
+}
+
+.footer-col a:hover {
+  color: var(--accent);
+}
+
+.logo-footer {
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: #fff;
+  text-decoration: none;
+}
+
+.social-links-pro a {
+  display: inline-block;
+  background: rgba(255,255,255,0.1);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 38px;
+  color: #fff;
+  margin-right: 8px;
+  transition: background 0.3s;
+}
+
+.social-links-pro a:hover {
+  background: var(--accent);
+  color: #000;
+}
+
+.footer-bottom-pro {
+  background: #111;
+  text-align: center;
+  padding: 15px 0;
+  font-size: 0.85rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+@media (max-width: 768px) {
+  .education-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  .hero-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .modal-content img {
+    height: 220px;
+  }
+}

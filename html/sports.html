@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SILTOUR: Sports & Recreation in Silvia, Cauca</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/css/sports.css">
+</head>
+<body>
+
+<!-- 🌄 NAVBAR -->
+  <header class="navbar-pro">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <i class="fas fa-mountain"></i> SIL<span class="accent-text">TOUR</span>
+      </a>
+      <nav class="nav-links-pro">
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li> 
+          <li><a href="tourism.html">Attractions</a></li>
+          <li><a href="health.html">Health</a></li>
+          <li><a href="education.html">Education</a></li>
+          <li><a href="restaurants.html">Restaurants</a></li>
+          <li><a href="sports.html">Recreation</a></li>
+        </ul>
+      </nav>
+      <button class="hamburger-menu" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+<header class="hero-header">
+    <h1>Sports & Recreation in Silvia</h1>
+    <p>Discover the best parks, trails, and sports facilities for fun and wellbeing.</p>
+</header>
+
+<main class="container">
+    <p class="instruction-text">Click on any card to see details and location.</p>
+
+    <ul id="sportsList" class="restaurant-grid">
+        <li class="restaurant-card" data-modal-target="#modal1" tabindex="0">
+            <img src="/static/img/deportes/parque recreativo.png" alt="Parque Los Cisnes" loading="lazy">
+            <div class="card-info">
+                <h3>Parque Los Cisnes</h3>
+                <p class="tagline">Ecological park connecting nature and Misak culture.</p>
+            </div>
+        </li>
+
+        <li class="restaurant-card" data-modal-target="#modal2" tabindex="0">
+            <img src="/static/img/deportes/poli-boyaca.png" alt="Polideportivo Boyacá" loading="lazy">
+            <div class="card-info">
+                <h3>Polideportivo Boyacá</h3>
+                <p class="tagline">Modern sports complex with soccer, basketball, and volleyball courts.</p>
+            </div>
+        </li>
+
+        <li class="restaurant-card" data-modal-target="#modal3" tabindex="0">
+            <img src="/static/img/deportes/mirador.png" alt="Sendero Chapultepec" loading="lazy">
+            <div class="card-info">
+                <h3>Sendero y Mirador Chapultepec</h3>
+                <p class="tagline">Trail with panoramic views of Silvia, nature, and Misak symbolism.</p>
+            </div>
+        </li>
+    </ul>
+</main>
+
+<!-- Modals -->
+<div id="modal1" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal1-title">
+    <div class="modal-content">
+        <button class="close-btn" data-close-modal>×</button>
+        <img src="/static/img/deportes/parque recreativo.png" alt="Parque Los Cisnes">
+        <h2 id="modal1-title">Parque Los Cisnes</h2>
+        <p>Guided walks, bird observation, and cultural workshops inspired by Misak traditions.</p>
+        <p><strong><i class="fas fa-map-marker-alt"></i> Address:</strong> Silvia, Cauca</p>
+    </div>
+</div>
+
+<div id="modal2" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal2-title">
+    <div class="modal-content">
+        <button class="close-btn" data-close-modal>×</button>
+        <img src="/static/img/deportes/poli-boyaca.png" alt="Polideportivo Boyacá">
+        <h2 id="modal2-title">Polideportivo Boyacá</h2>
+        <p>Multiple courts, hosting local tournaments and youth programs.</p>
+        <p><strong><i class="fas fa-map-marker-alt"></i> Address:</strong> Silvia, Cauca</p>
+    </div>
+</div>
+
+<div id="modal3" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal3-title">
+    <div class="modal-content">
+        <button class="close-btn" data-close-modal>×</button>
+        <img src="/static/img/deportes/mirador.png" alt="Sendero Chapultepec">
+        <h2 id="modal3-title">Sendero y Mirador Chapultepec</h2>
+        <p>Scenic route with panoramic views and connection with local culture and nature.</p>
+        <p><strong><i class="fas fa-map-marker-alt"></i> Address:</strong> Silvia, Cauca</p>
+    </div>
+</div>
+
+<script src="/js/sports.js"></script>
+</body>
+</html>
