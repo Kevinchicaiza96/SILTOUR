@@ -9,86 +9,102 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-  <!-- Estilos globales y locales -->
-  <link rel="stylesheet" href="/css/education.css">
+  <!-- Estilos -->
+  <link rel="stylesheet" href="../css/education.css">
 </head>
 <body>
 
   <!-- 🌄 NAVBAR -->
-  <header class="navbar-pro">
+  <header class="navbar-pro" style="position: relative;">
     <div class="container">
       <a href="index.html" class="logo">
         <i class="fas fa-mountain"></i> SIL<span class="accent-text">TOUR</span>
       </a>
+
+      <!-- Menú escritorio -->
       <nav class="nav-links-pro">
         <ul>
-          <li><a href="index.html">Home</a></li> 
+          <li><a href="index.html" class="active">Home</a></li> 
           <li><a href="tourism.html">Attractions</a></li>
           <li><a href="health.html">Health</a></li>
-          <li><a href="education.html" class="active">Education</a></li>
+          <li><a href="education.html">Education</a></li>
           <li><a href="restaurants.html">Restaurants</a></li>
           <li><a href="sports.html">Recreation</a></li>
         </ul>
       </nav>
-      <button class="hamburger-menu" aria-label="Toggle navigation">
+
+      <!-- Menú hamburguesa -->
+      <div class="hamburger-menu" aria-label="Menu" aria-expanded="false" role="button" tabindex="0">
         <i class="fas fa-bars"></i>
-      </button>
+      </div>
     </div>
+
+    <!-- Menú móvil -->
+    <nav class="mobile-menu-pro">
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li> 
+        <li><a href="tourism.html">Attractions</a></li>
+        <li><a href="health.html">Health</a></li>
+        <li><a href="education.html">Education</a></li>
+        <li><a href="restaurants.html">Restaurants</a></li>
+        <li><a href="sports.html">Recreation</a></li>
+      </ul>
+    </nav>
   </header>
 
   <!-- 🎓 HERO SECTION -->
-  <header class="hero-header">
+  <section class="hero-header">
     <h1>Educational Institutions of Silvia, Cauca</h1>
     <p>Discover the academic institutions that nurture the cultural and intellectual growth of Silvia.</p>
-  </header>
+  </section>
 
   <!-- 📚 MAIN CONTENT -->
   <main class="container">
     <p class="instruction-text">Click on any institution to learn more about its programs, history, and community involvement.</p>
 
-    <ul id="educationList" class="education-grid">
+    <div id="educationList" class="education-grid">
       <!-- Misak University -->
-      <li class="education-card" data-modal-target="#modal1" tabindex="0">
-        <img src="/img_education/misak.png" alt="Misak University" loading="lazy">
+      <div class="education-card" data-modal-target="#modal1" tabindex="0">
+        <img src="../img_education/misak.png" alt="Misak University" loading="lazy">
         <div class="card-info">
           <h3>Misak University</h3>
           <p class="tagline">Community-based higher education inspired by ancestral knowledge.</p>
           <div class="tags"><span>#Indigenous</span><span>#HigherEd</span><span>#CulturalIdentity</span></div>
         </div>
-      </li>
+      </div>
 
       <!-- Ezequiel Hurtado -->
-      <li class="education-card" data-modal-target="#modal2" tabindex="0">
-        <img src="/img_education/hurtado.png" alt="Ezequiel Hurtado Educational Institution" loading="lazy">
+      <div class="education-card" data-modal-target="#modal2" tabindex="0">
+        <img src="../img_education/hurtado.png" alt="Ezequiel Hurtado Educational Institution" loading="lazy">
         <div class="card-info">
           <h3>Ezequiel Hurtado Institution</h3>
           <p class="tagline">Promoting inclusive education for rural and urban youth.</p>
           <div class="tags"><span>#Secondary</span><span>#Inclusive</span><span>#PublicEducation</span></div>
         </div>
-      </li>
+      </div>
 
       <!-- Francisco José de Caldas -->
-      <li class="education-card" data-modal-target="#modal3" tabindex="0">
-        <img src="/img_education/francisco.png" alt="Francisco José de Caldas Agricultural School" loading="lazy">
+      <div class="education-card" data-modal-target="#modal3" tabindex="0">
+        <img src="../img_education/francisco.png" alt="Francisco José de Caldas Agricultural School" loading="lazy">
         <div class="card-info">
           <h3>Francisco José de Caldas Agricultural Technical School</h3>
           <p class="tagline">Agricultural innovation for local and environmental development.</p>
           <div class="tags"><span>#Agriculture</span><span>#Technical</span><span>#Sustainability</span></div>
         </div>
-      </li>
-    </ul>
+      </div>
+    </div>
   </main>
 
   <!-- 📘 MODALES -->
   <div id="modal1" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal1-title">
     <div class="modal-content">
       <button class="close-btn" data-close-modal>×</button>
-      <img src="/img_education/misak.png" alt="Misak University">
+      <img src="../img_education/misak.png" alt="Misak University">
       <h2 id="modal1-title">Misak University (Ala Kusreik Ya)</h2>
       <p>
-        This university represents the self-determination of the Misak people through education.
-        With support from the Ministry of Education and community leaders, it develops programs 
-        that strengthen indigenous identity and intercultural dialogue.
+        Represents the self-determination of the Misak people through education.
+        With support from the Ministry of Education, it develops programs 
+        strengthening indigenous identity and intercultural dialogue.
       </p>
       <p><strong><i class="fas fa-map-marker-alt"></i> Location:</strong> Resguardo Misak, Silvia, Cauca</p>
       <p><strong><i class="fas fa-building"></i> Type:</strong> Community Indigenous University</p>
@@ -101,11 +117,11 @@
   <div id="modal2" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal2-title">
     <div class="modal-content">
       <button class="close-btn" data-close-modal>×</button>
-      <img src="/img_education/hurtado.png" alt="Ezequiel Hurtado Educational Institution">
+      <img src="../img_education/hurtado.png" alt="Ezequiel Hurtado Educational Institution">
       <h2 id="modal2-title">Ezequiel Hurtado Educational Institution</h2>
       <p>
-        A public educational center committed to academic excellence and human values.
-        It offers preschool, primary, and secondary levels, emphasizing inclusion, technology, and citizenship.
+        Public educational center committed to academic excellence and human values.
+        Offers preschool, primary, and secondary levels, emphasizing inclusion, technology, and citizenship.
       </p>
       <p><strong><i class="fas fa-map-marker-alt"></i> Address:</strong> Calle 7 #3-20, Silvia, Cauca</p>
       <p><strong><i class="fas fa-phone-alt"></i> Contact:</strong> +57 (2) XXX XXXX</p>
@@ -118,11 +134,11 @@
   <div id="modal3" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal3-title">
     <div class="modal-content">
       <button class="close-btn" data-close-modal>×</button>
-      <img src="/img_education/francisco.png" alt="Francisco José de Caldas Agricultural Technical School">
+      <img src="../img_education/francisco.png" alt="Francisco José de Caldas Agricultural Technical School">
       <h2 id="modal3-title">Francisco José de Caldas Agricultural Technical School</h2>
       <p>
-        An educational institution focused on agricultural science, environmental stewardship, and
-        technical development. It prepares students for productive rural life and higher education.
+        Focused on agricultural science, environmental stewardship, and technical development.
+        Prepares students for productive rural life and higher education.
       </p>
       <p><strong><i class="fas fa-map-marker-alt"></i> Address:</strong> Vereda El Ortigal, Silvia, Cauca</p>
       <p><strong><i class="fas fa-clock"></i> Hours:</strong> Mon–Fri: 7:00 AM – 4:00 PM</p>
@@ -135,7 +151,6 @@
   <!-- 🏔️ FOOTER -->
   <footer class="footer-pro">
     <div class="container footer-grid">
-      
       <div class="footer-col branding">
         <a href="index.html" class="logo-footer">
           <i class="fas fa-mountain"></i> SILVIA CAUCA
@@ -175,7 +190,6 @@
           <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
         </div>
       </div>
-
     </div>
 
     <div class="footer-bottom-pro">
@@ -186,6 +200,6 @@
   </footer>
 
   <!-- JS -->
-  <script src="/js/education.js"></script>
+  <script src="../js/education.js"></script>
 </body>
 </html>

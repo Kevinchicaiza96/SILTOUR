@@ -24,19 +24,9 @@ const CONFIG = {
 // SCROLL ANIMATIONS - IntersectionObserver
 // ============================================
 
-/**
- * Inicializa animaciones al scroll
- * Observa elementos y les agrega clase cuando entran en viewport
- */
 function initScrollAnimations() {
   const elements = document.querySelectorAll(CONFIG.SELECTORS.HIDDEN_ELEMENTS);
-  
   if (!elements.length) return;
-
-  const observerOptions = {
-    threshold: CONFIG.INTERSECTION_THRESHOLD,
-    rootMargin: '0px 0px -50px 0px'
-  };
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -45,7 +35,10 @@ function initScrollAnimations() {
         observer.unobserve(entry.target);
       }
     });
-  }, observerOptions);
+  }, {
+    threshold: CONFIG.INTERSECTION_THRESHOLD,
+    rootMargin: '0px 0px -50px 0px'
+  });
 
   elements.forEach(el => observer.observe(el));
 }
@@ -60,9 +53,6 @@ class ModalManager {
     this.init();
   }
 
-  /**
-   * Inicializa todos los event listeners de modales
-   */
   init() {
     this.attachCardListeners();
     this.attachCloseListeners();
@@ -70,10 +60,6 @@ class ModalManager {
     this.attachKeyboardListener();
   }
 
-  /**
-   * Abre un modal por ID
-   * @param {string} modalId - ID del modal
-   */
   openModal(modalId) {
     const modal = document.getElementById(modalId);
     if (!modal) {
@@ -81,105 +67,67 @@ class ModalManager {
       return;
     }
 
-    // Cerrar modal anterior si existe
-    if (this.activeModal) {
-      this.closeModal(this.activeModal.id);
-    }
+    if (this.activeModal) this.closeModal(this.activeModal.id);
 
     modal.classList.add(CONFIG.MODAL_ACTIVE_CLASS);
     modal.setAttribute('aria-hidden', 'false');
     this.activeModal = modal;
     document.body.style.overflow = 'hidden';
 
-    // Trigger animación
-    requestAnimationFrame(() => {
-      modal.classList.add('open');
-    });
+    requestAnimationFrame(() => modal.classList.add('open'));
   }
 
-  /**
-   * Cierra un modal por ID
-   * @param {string} modalId - ID del modal
-   */
   closeModal(modalId) {
     const modal = document.getElementById(modalId);
     if (!modal) return;
 
-    modal.classList.remove(CONFIG.MODAL_ACTIVE_CLASS);
-    modal.classList.remove('open');
+    modal.classList.remove(CONFIG.MODAL_ACTIVE_CLASS, 'open');
     modal.setAttribute('aria-hidden', 'true');
     this.activeModal = null;
     document.body.style.overflow = '';
   }
 
-  /**
-   * Cierra el modal activo
-   */
   closeActiveModal() {
-    if (this.activeModal) {
-      this.closeModal(this.activeModal.id);
-    }
+    if (this.activeModal) this.closeModal(this.activeModal.id);
   }
 
-  /**
-   * Vincula event listeners a las tarjetas
-   */
   attachCardListeners() {
     const cards = document.querySelectorAll(CONFIG.SELECTORS.CARDS);
-    
     cards.forEach(card => {
-      // Click en la card completa
-      card.addEventListener('click', (e) => {
+      card.addEventListener('click', () => {
         const modalId = card.getAttribute('data-modal');
-        if (modalId) {
-          this.openModal(modalId);
-        }
+        if (modalId) this.openModal(modalId);
       });
 
-      // Click en el botón específico
       const button = card.querySelector(CONFIG.SELECTORS.CARD_BUTTONS);
       if (button) {
         button.addEventListener('click', (e) => {
-          e.stopPropagation(); // Evitar doble click
+          e.stopPropagation();
           const modalId = card.getAttribute('data-modal');
-          if (modalId) {
-            this.openModal(modalId);
-          }
+          if (modalId) this.openModal(modalId);
         });
       }
     });
   }
 
-  /**
-   * Vincula event listeners a los botones cerrar
-   */
   attachCloseListeners() {
     document.querySelectorAll(CONFIG.SELECTORS.CLOSE_BUTTONS).forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.stopPropagation();
         const modal = btn.closest(CONFIG.SELECTORS.MODALS);
-        if (modal) {
-          this.closeModal(modal.id);
-        }
+        if (modal) this.closeModal(modal.id);
       });
     });
   }
 
-  /**
-   * Cierra modal al hacer clic fuera del contenido
-   */
   attachOutsideClickListener() {
     document.addEventListener('click', (e) => {
-      if (e.target.classList.contains('modal') && 
-          e.target === this.activeModal) {
+      if (e.target.classList.contains('modal') && e.target === this.activeModal) {
         this.closeActiveModal();
       }
     });
   }
 
-  /**
-   * Cierra modal al presionar ESC
-   */
   attachKeyboardListener() {
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && this.activeModal) {
@@ -193,10 +141,6 @@ class ModalManager {
 // UTILITY FUNCTIONS
 // ============================================
 
-/**
- * Valida que el DOM esté listo
- * @param {Function} callback - Función a ejecutar
- */
 function onDOMReady(callback) {
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', callback);
@@ -205,15 +149,9 @@ function onDOMReady(callback) {
   }
 }
 
-/**
- * Throttle para eventos frecuentes
- * @param {Function} func - Función a ejecutar
- * @param {number} limit - Tiempo mínimo entre ejecuciones (ms)
- * @returns {Function}
- */
 function throttle(func, limit) {
   let inThrottle;
-  return function(...args) {
+  return function (...args) {
     if (!inThrottle) {
       func.apply(this, args);
       inThrottle = true;
@@ -222,15 +160,9 @@ function throttle(func, limit) {
   };
 }
 
-/**
- * Debounce para eventos de resize
- * @param {Function} func - Función a ejecutar
- * @param {number} delay - Retardo (ms)
- * @returns {Function}
- */
 function debounce(func, delay) {
   let timeoutId;
-  return function(...args) {
+  return function (...args) {
     clearTimeout(timeoutId);
     timeoutId = setTimeout(() => func.apply(this, args), delay);
   };
@@ -241,38 +173,34 @@ function debounce(func, delay) {
 // ============================================
 
 onDOMReady(() => {
-  // Inicializar scroll animations
   initScrollAnimations();
-
-  // Inicializar modal manager
   const modalManager = new ModalManager();
 
-  // Log para debugging (remover en producción)
-  if (process.env.NODE_ENV !== 'production') {
-    console.log('✅ SILTOUR - Aplicación inicializada');
+  // ================================
+  // MENÚ HAMBURGUESA (CORREGIDO)
+  // ================================
+  const hamburger = document.querySelector('.hamburger-menu');
+  const mobileMenu = document.querySelector('.mobile-menu-pro');
+
+  if (hamburger && mobileMenu) {
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('active');
+      hamburger.classList.toggle('open');
+    });
   }
 
-  // Hacer disponible globalmente para debugging
-  window.SiltourApp = {
-    modalManager,
-    config: CONFIG
-  };
+  console.log('✅ SILTOUR - Aplicación inicializada');
+  window.SiltourApp = { modalManager, config: CONFIG };
 });
 
 // ============================================
-// EVENT LISTENERS ADICIONALES (OPCIONAL)
+// EVENTOS ADICIONALES
 // ============================================
 
-/**
- * Prevenir comportamientos no deseados
- */
-window.addEventListener('beforeunload', (e) => {
-  // Limpiar si es necesario
+window.addEventListener('beforeunload', () => {
+  // Limpieza si se requiere
 });
 
-/**
- * Detectar cambios de orientación en mobile
- */
 window.addEventListener('orientationchange', debounce(() => {
   console.log('Orientación cambiada');
 }, 300));

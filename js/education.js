@@ -1,10 +1,10 @@
 // ==== Responsive Navbar ====
 const hamburger = document.querySelector('.hamburger-menu');
-const navLinks = document.querySelector('.nav-links-pro');
+const mobileMenu = document.querySelector('.mobile-menu-pro');
 
-if (hamburger && navLinks) {
+if (hamburger && mobileMenu) {
   hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
     hamburger.classList.toggle('active');
   });
 }

@@ -1,5 +1,5 @@
 /* ============================================================
-SILVIA, CAUCA - Education Institutions (Modern & Consistent)
+SILVIA, CAUCA - Sports & Recreation (Modern, Responsive & Clean)
 ============================================================ */
 
 /* 🎨 VARIABLES */
@@ -59,29 +59,71 @@ body {
   display: flex;
   gap: 20px;
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-links-pro a {
   color: var(--text);
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.3s;
+  transition: var(--transition);
 }
 
 .nav-links-pro a:hover {
   color: var(--primary);
 }
 
-.btn-cta {
-  background: var(--primary);
-  color: #fff !important;
-  padding: 8px 15px;
+/* ===========================
+   MENÚ HAMBURGUESA (MÓVIL)
+=========================== */
+.hamburger-menu {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  color: var(--primary);
+  cursor: pointer;
+}
+
+.mobile-menu-pro {
+  display: none;
+  flex-direction: column;
+  gap: 15px;
+  background: #fff;
+  padding: 25px;
+  position: absolute;
+  top: 65px;
+  right: 30px;
   border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  z-index: 999;
+  transform: translateY(-10px);
+  opacity: 0;
   transition: var(--transition);
 }
 
-.btn-cta:hover {
-  background: var(--accent);
+.mobile-menu-pro ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mobile-menu-pro a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.mobile-menu-pro a:hover {
+  color: var(--primary);
+}
+
+.mobile-menu-pro.active {
+  display: flex;
+  transform: translateY(0);
+  opacity: 1;
 }
 
 /* ===========================
@@ -115,7 +157,7 @@ body {
   font-style: italic;
 }
 
-.restaurant-grid { /* se puede renombrar a sports-grid */
+.sports-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 25px;
@@ -124,28 +166,36 @@ body {
   margin: auto;
 }
 
-.restaurant-card { /* se puede renombrar a sports-card */
+.sports-card {
   background: var(--card-bg);
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--shadow);
   cursor: pointer;
   transition: var(--transition);
+  display: flex;
+  flex-direction: column;
 }
 
-.restaurant-card:hover {
+.sports-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
-.restaurant-card img {
+.sports-card img {
   width: 100%;
   height: 200px;
   object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.sports-card:hover img {
+  transform: scale(1.05);
 }
 
 .card-info {
   padding: 18px;
+  flex: 1;
 }
 
 .card-info h3 {
@@ -158,6 +208,20 @@ body {
   color: var(--muted);
   font-size: 0.95rem;
   margin-bottom: 10px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tags span {
+  background: var(--accent);
+  color: #fff;
+  border-radius: 10px;
+  padding: 4px 10px;
+  font-size: 0.75rem;
 }
 
 /* ===========================
@@ -251,7 +315,7 @@ body {
 }
 
 /* ===========================
-  FOOTER
+   FOOTER
 =========================== */
 .footer-pro {
   background: #1c1c1c;
@@ -330,16 +394,39 @@ body {
 /* ===========================
    RESPONSIVE
 =========================== */
-@media (max-width: 768px) {
-  .restaurant-grid {
+@media (max-width: 1024px) {
+  .sports-grid {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+  .hero-header h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links-pro {
+    display: none;
+  }
+
+  .hamburger-menu {
+    display: block;
   }
 
   .hero-header h1 {
     font-size: 1.8rem;
   }
 
-  .modal-content img {
-    height: 220px;
+  .hero-header p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sports-grid {
+    grid-template-columns: 1fr;
+    padding: 0 15px;
+  }
+  .hero-header {
+    padding: 60px 15px;
   }
 }

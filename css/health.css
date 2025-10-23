@@ -1,5 +1,5 @@
 /* ============================================================
-SILVIA, CAUCA - Restaurants Guide (Modern & Clean)
+   SILVIA, CAUCA - Health Network Guide (Modern & Clean)
 ============================================================ */
 
 /* 🎨 VARIABLES */
@@ -83,7 +83,66 @@ body {
 }
 
 /* ===========================
-   HOSPITAL HERO
+📱 MENÚ HAMBURGUESA (móvil)
+=========================== */
+.hamburger-menu {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  color: var(--primary);
+  cursor: pointer;
+}
+
+.mobile-menu-pro {
+  display: none;
+  flex-direction: column;
+  gap: 15px;
+  background: #fff;
+  padding: 25px;
+  position: absolute;
+  top: 65px;
+  right: 30px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  z-index: 999;
+}
+
+.mobile-menu-pro ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mobile-menu-pro a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.mobile-menu-pro a:hover {
+  color: var(--primary);
+}
+
+.mobile-menu-pro.active {
+  display: flex;
+}
+
+/* Animación suave */
+.mobile-menu-pro {
+  transform: translateY(-10px);
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.mobile-menu-pro.active {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ===========================
+   HERO
 =========================== */
 .hero-header {
   background: linear-gradient(135deg, #305c4c 0%, #203a30 100%);
@@ -104,7 +163,7 @@ body {
 }
 
 /* ===========================
-   HOSPITAL CARDS GRID
+   HOSPITAL GRID (LIST PAGE)
 =========================== */
 .instruction-text {
   text-align: center;
@@ -113,7 +172,7 @@ body {
   font-style: italic;
 }
 
-.restaurant-grid { /* reutilizamos grid para hospitales */
+.hospital-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 25px;
@@ -122,21 +181,31 @@ body {
   margin: auto;
 }
 
-.restaurant-card {
+.hospital-card {
   background: var(--card-bg);
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--shadow);
   cursor: pointer;
   transition: var(--transition);
+  text-decoration: none;
+  color: inherit;
 }
 
-.restaurant-card:hover {
+.hospital-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
-.restaurant-card img {
+.hospital-card.focused {
+  outline: 3px solid var(--accent);
+}
+
+.hospital-card.clicked {
+  transform: scale(0.98);
+}
+
+.hospital-card img {
   width: 100%;
   height: 200px;
   object-fit: cover;
@@ -159,111 +228,124 @@ body {
 }
 
 /* ===========================
-   HOSPITAL PAGES
+   HOSPITAL DETAIL PAGES (CORREGIDO)
 =========================== */
 .milagrosa-section,
 .dominga-section,
-.cta-misak-section {
-  padding: 40px 20px;
-  max-width: 1000px;
-  margin: auto;
+.hospital-detail {  /* clase genérica */
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.milagrosa-section header,
+.dominga-section header,
+.hospital-detail header {
+  text-align: center;
+  margin-bottom: 30px;
 }
 
 .milagrosa-title,
 .dominga-title,
-.cta-misak-section h1 {
+.hospital-detail h1 {
   color: var(--primary);
   font-size: 2rem;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .milagrosa-divider,
 .dominga-divider,
-.cta-divider {
+.hospital-detail .divider {
   width: 80px;
   height: 3px;
-  background-color: var(--accent);
-  margin-bottom: 25px;
+  background: var(--accent);
+  margin: 10px auto;
   border: none;
+  border-radius: var(--radius);
 }
 
 .back-link {
   display: inline-block;
-  margin-bottom: 25px;
+  margin-top: 10px;
   color: var(--primary);
-  text-decoration: none;
   font-weight: 500;
 }
 
 .back-link i {
-  margin-right: 8px;
-}
-
-.back-link:hover {
-  color: var(--accent);
+  margin-right: 5px;
 }
 
 .milagrosa-content,
 .dominga-content,
-.cta-misak-content {
+.hospital-detail .content {
   display: flex;
   gap: 30px;
   flex-wrap: wrap;
   margin-bottom: 30px;
 }
 
-.milagrosa-image,
-.dominga-image,
-.cta-misak-img {
-  flex: 1 1 300px;
-}
-
 .milagrosa-image img,
 .dominga-image img,
-.cta-misak-img img {
+.hospital-detail img {
   width: 100%;
+  max-width: 500px;
   border-radius: var(--radius);
-  object-fit: cover;
+  box-shadow: var(--shadow);
 }
 
 .milagrosa-info,
 .dominga-info,
-.cta-misak-info {
-  flex: 2 1 400px;
+.hospital-detail .info {
+  flex: 1;
+  min-width: 280px;
 }
 
-.milagrosa-info p,
-.dominga-info p,
-.cta-misak-info p,
+.milagrosa-info .label,
+.dominga-info .label,
+.hospital-detail .info .label {
+  color: var(--primary);
+  font-weight: 600;
+}
+
 .milagrosa-description,
 .dominga-description,
-.cta-misak-description p {
-  line-height: 1.6;
+.hospital-detail .description {
+  margin-bottom: 30px;
   color: var(--text);
-  margin-bottom: 12px;
-}
-
-.milagrosa-info ul,
-.dominga-info ul {
-  padding-left: 20px;
-  margin-bottom: 12px;
-}
-
-.milagrosa-map,
-.dominga-map,
-.cta-misak-map {
-  margin-top: 25px;
-  border-radius: var(--radius);
-  overflow: hidden;
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
 .milagrosa-map iframe,
 .dominga-map iframe,
-.cta-misak-map iframe {
+.hospital-detail .map iframe {
   width: 100%;
   height: 450px;
-  border: 0;
   border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* ===========================
+   ALERTAS RÁPIDAS
+=========================== */
+.alert-message {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: var(--accent);
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.4s, transform 0.4s;
+  z-index: 2000;
+}
+
+.alert-message.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ===========================
@@ -347,17 +429,66 @@ body {
    RESPONSIVE
 =========================== */
 @media (max-width: 768px) {
-  .restaurant-grid {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  .nav-links-pro {
+    display: none;
+  }
+
+  .hamburger-menu {
+    display: block;
+  }
+
+  .mobile-menu-pro.active {
+    display: flex;
   }
 
   .hero-header h1 {
     font-size: 1.8rem;
   }
 
+  .hospital-card img {
+    height: 180px;
+  }
+
+  .hospital-grid {
+    padding: 0 15px 40px;
+    gap: 20px;
+  }
+
   .milagrosa-content,
   .dominga-content,
-  .cta-misak-content {
+  .hospital-detail .content {
     flex-direction: column;
+    gap: 20px;
+  }
+
+  .milagrosa-image img,
+  .dominga-image img,
+  .hospital-detail img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .milagrosa-info,
+  .dominga-info,
+  .hospital-detail .info {
+    min-width: 100%;
+  }
+
+  .milagrosa-map iframe,
+  .dominga-map iframe,
+  .hospital-detail .map iframe {
+    height: 300px;
+  }
+
+  .footer-grid {
+    padding: 0 15px;
+    gap: 25px;
+  }
+
+  .social-links-pro a {
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    margin-right: 6px;
   }
 }

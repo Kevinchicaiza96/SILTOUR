@@ -1,0 +1,278 @@
+/* ============================================================
+   HOSPITAL MAMA DOMINGA - CSS COMPLETO
+============================================================ */
+
+/* =========================
+   VARIABLES
+========================= */
+:root {
+  --primary: #305c4c;
+  --accent: #d8b36a;
+  --text: #222;
+  --muted: #666;
+  --bg: #f7f7f7;
+  --card-bg: #fff;
+  --radius: 14px;
+  --shadow: 0 6px 18px rgba(0,0,0,0.1);
+  --transition: all 0.3s ease;
+  font-family: "Poppins", sans-serif;
+}
+
+/* =========================
+   BASE
+========================= */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family, "Poppins", sans-serif);
+  background: var(--bg);
+  color: var(--text);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* =========================
+   NAVBAR Y MENÚ HAMBURGUESA
+========================= */
+.navbar-pro {
+  background: #fff;
+  border-bottom: 1px solid #e0e0e0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-pro .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--primary);
+}
+
+.nav-links-pro ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links-pro a {
+  color: var(--text);
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links-pro a:hover,
+.nav-links-pro a.active {
+  color: var(--primary);
+}
+
+.hamburger-menu {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--primary);
+}
+
+.mobile-menu-pro {
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  background: #fff;
+  position: absolute;
+  top: 65px;
+  right: 30px;
+  padding: 20px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  z-index: 999;
+}
+
+.mobile-menu-pro.active {
+  display: flex;
+}
+
+.mobile-menu-pro ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mobile-menu-pro a {
+  display: block;
+  padding: 8px 0;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.mobile-menu-pro a:hover,
+.mobile-menu-pro a.active {
+  color: var(--primary);
+}
+
+/* =========================
+   HERO
+========================= */
+.dominga-hero {
+  background: linear-gradient(135deg, #305c4c 0%, #203a30 100%);
+  color: #fff;
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.dominga-hero h1 {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+
+.dominga-hero p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 15px;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.back-link i {
+  margin-right: 5px;
+}
+
+/* =========================
+   MAIN CONTENT
+========================= */
+.dominga-section {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.dominga-content {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.dominga-image img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.dominga-info {
+  flex: 1;
+  min-width: 280px;
+}
+
+.dominga-info .label {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.dominga-description {
+  margin-bottom: 30px;
+  color: var(--text);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.dominga-map iframe {
+  width: 100%;
+  height: 450px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 0;
+}
+
+/* =========================
+   FOOTER
+========================= */
+.footer-pro {
+  background: #1c1c1c;
+  color: #ccc;
+  padding-top: 50px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 40px;
+  padding: 0 30px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.footer-col h4 {
+  color: var(--accent);
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+}
+
+.footer-col a {
+  color: #aaa;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  line-height: 1.8;
+  transition: color 0.3s;
+}
+
+.footer-col a:hover {
+  color: var(--accent);
+}
+
+.footer-bottom-pro {
+  background: #111;
+  text-align: center;
+  padding: 15px 0;
+  font-size: 0.85rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .nav-links-pro {
+    display: none;
+  }
+
+  .hamburger-menu {
+    display: block;
+  }
+
+  .dominga-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .dominga-image img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .dominga-map iframe {
+    height: 300px;
+  }
+
+  .footer-grid {
+    padding: 0 15px;
+    gap: 25px;
+  }
+}

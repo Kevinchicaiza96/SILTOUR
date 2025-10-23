@@ -1,13 +1,16 @@
-// static/js/script.js
-// Modales accesibles + menú hamburguesa para restaurants.html
-// (Funciona con la estructura HTML que me diste)
 (() => {
   const $ = (sel, ctx = document) => ctx.querySelector(sel);
   const $$ = (sel, ctx = document) => Array.from((ctx || document).querySelectorAll(sel));
 
-  /* ---------------------------
-     UTILIDADES
-  --------------------------- */
+  /* =========================
+     MODALES (ya funcional)
+  ========================= */
+  const cards = $$('[data-modal-target]');
+  const modals = $$('.modal');
+  const closeBtns = $$('[data-close-modal]');
+  let unlockFocus = null;
+  let lastFocused = null;
+
   const isFocusable = el => el && el.matches('a[href], button:not([disabled]), input, textarea, select, [tabindex]:not([tabindex="-1"])');
 
   function trapFocus(container) {
@@ -34,22 +37,12 @@
     return () => document.removeEventListener('keydown', handle);
   }
 
-  /* ---------------------------
-     MODALES
-  --------------------------- */
-  const cards = $$('[data-modal-target]');
-  const modals = $$('.modal');
-  const closeBtns = $$('[data-close-modal]');
-  let unlockFocus = null;
-  let lastFocused = null;
-
   function openModal(modal) {
     if (!modal) return;
     lastFocused = document.activeElement;
     modal.classList.add('active');
     modal.setAttribute('aria-hidden', 'false');
-    document.documentElement.style.overflow = 'hidden'; // bloquear scroll
-    // focus al primer interactivo
+    document.documentElement.style.overflow = 'hidden';
     const firstFocus = Array.from(modal.querySelectorAll('*')).find(isFocusable);
     if (firstFocus) firstFocus.focus();
     unlockFocus = trapFocus(modal);
@@ -63,21 +56,16 @@
     document.documentElement.style.overflow = '';
     if (typeof unlockFocus === 'function') unlockFocus();
     unlockFocus = null;
-    // restaurar foco
     if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
-    // limpiar hash sin forzar recarga
     if (location.hash && location.hash === '#' + modal.id) {
       history.replaceState(null, '', location.pathname + location.search);
     }
   }
 
-  // Abrir tarjetas (click + teclado)
   cards.forEach(card => {
     const targetSel = card.dataset.modalTarget;
     const modal = targetSel ? document.querySelector(targetSel) : null;
     if (!modal) return;
-
-    // make card keyboard operable
     card.setAttribute('role', 'button');
     card.setAttribute('aria-controls', modal.id || '');
     card.addEventListener('click', () => openModal(modal));
@@ -89,7 +77,6 @@
     });
   });
 
-  // Cerrar con los botones de cierre
   closeBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       const modal = btn.closest('.modal');
@@ -97,102 +84,92 @@
     });
   });
 
-  // Cerrar al click en overlay
   modals.forEach(modal => {
     modal.addEventListener('click', (e) => {
       if (e.target === modal) closeModal(modal);
     });
-
-    // prevenir que clicks dentro del contenido burbujen al overlay
     const content = modal.querySelector('.modal-content');
-    if (content) {
-      content.addEventListener('click', (e) => e.stopPropagation());
-    }
+    if (content) content.addEventListener('click', e => e.stopPropagation());
   });
 
-  // Teclado global: Esc para cerrar
-  document.addEventListener('keydown', (e) => {
+  document.addEventListener('keydown', e => {
     if (e.key === 'Escape') {
       const open = document.querySelector('.modal.active');
       if (open) closeModal(open);
     }
   });
 
-  // Si la página carga con hash #modalX abre el modal correspondiente
   window.addEventListener('load', () => {
     if (location.hash) {
       const targetModal = document.querySelector(location.hash);
-      if (targetModal && targetModal.classList.contains('modal')) {
-        openModal(targetModal);
-      }
+      if (targetModal && targetModal.classList.contains('modal')) openModal(targetModal);
     }
   });
 
-  /* ---------------------------
-     MENÚ HAMBURGUESA (móvil)
-  --------------------------- */
+  /* =========================
+     MENÚ HAMBURGUESA + SUBMENÚ MÓVIL
+  ========================= */
   const hamburger = $('.hamburger-menu');
-  const navList = $('.nav-links-pro ul');
+  const mobileMenu = $('.mobile-menu-pro');
 
-  if (hamburger && navList) {
+  if (hamburger && mobileMenu) {
     hamburger.setAttribute('aria-expanded', 'false');
+
+    // Abrir / cerrar menú móvil
     hamburger.addEventListener('click', () => {
-      const expanded = hamburger.getAttribute('aria-expanded') === 'true';
-      hamburger.setAttribute('aria-expanded', String(!expanded));
-      // toggling simple: añadir clase o inline style
-      if (!expanded) {
-        navList.style.display = 'flex';
-        navList.style.flexDirection = 'column';
-        navList.style.gap = '10px';
-        navList.style.background = 'rgba(0,0,0,0.6)';
-        navList.style.position = 'absolute';
-        navList.style.right = '20px';
-        navList.style.top = '60px';
-        navList.style.padding = '12px';
-        navList.style.borderRadius = '8px';
-      } else {
-        navList.style.display = '';
-        navList.style.position = '';
-        navList.style.right = '';
-        navList.style.top = '';
-        navList.style.padding = '';
-        navList.style.borderRadius = '';
-        navList.style.background = '';
-        navList.style.flexDirection = '';
+      mobileMenu.classList.toggle('active');
+      hamburger.setAttribute('aria-expanded', String(mobileMenu.classList.contains('active')));
+      const icon = hamburger.querySelector('i');
+      if (icon) {
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
       }
     });
 
-    // Asegurar que el nav vuelve a su estado normal en resize desktop
+    // Cerrar menú al hacer click en un enlace
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        hamburger.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+        const icon = hamburger.querySelector('i');
+        if (icon) {
+          icon.classList.add('fa-bars');
+          icon.classList.remove('fa-times');
+        }
+      });
+    });
+
+    // Submenús móviles (si los hay)
+    mobileMenu.querySelectorAll('li').forEach(li => {
+      const submenu = li.querySelector('ul');
+      if (submenu) {
+        li.firstElementChild.addEventListener('click', e => {
+          if (window.innerWidth <= 768) {
+            e.preventDefault();
+            submenu.classList.toggle('open');
+          }
+        });
+      }
+    });
+
+    // Reset en resize
     window.addEventListener('resize', () => {
       if (window.innerWidth > 768) {
-        navList.style.display = '';
+        mobileMenu.classList.remove('active');
+        mobileMenu.querySelectorAll('ul').forEach(ul => ul.classList.remove('open'));
         hamburger.setAttribute('aria-expanded', 'false');
+        const icon = hamburger.querySelector('i');
+        if (icon) {
+          icon.classList.add('fa-bars');
+          icon.classList.remove('fa-times');
+        }
       }
     });
   }
 
-  /* ---------------------------
-     ENH: enlaces "Get Directions" en modales abren en nueva pestaña (ya lo hacen),
-     pero nos aseguramos que tengan target si alguien los quita en el HTML.
-  --------------------------- */
+  /* =========================
+     ENH: enlaces "Get Directions" abren en nueva pestaña
+  ========================= */
   $$('.modal .btn-map').forEach(a => a.setAttribute('target', '_blank'));
-
-  /* ---------------------------
-     PREVENCIÓN: si JS está deshabilitado los modales siguen en DOM,
-     pero sin interactividad. Nada más que hacer.
-  --------------------------- */
-
 })();
-
-// ============================
-// 📱 MENÚ HAMBURGUESA
-// ============================
-const menuBtn = document.querySelector('.hamburger-menu');
-const navLinks = document.querySelector('.nav-links-pro');
-
-menuBtn.addEventListener('click', () => {
-  navLinks.classList.toggle('open');
-  menuBtn.querySelector('i').classList.toggle('fa-bars');
-  menuBtn.querySelector('i').classList.toggle('fa-times');
-});
-
