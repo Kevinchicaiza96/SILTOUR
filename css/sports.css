@@ -4,8 +4,8 @@ SILVIA, CAUCA - Sports & Recreation (Modern, Responsive & Clean)
 
 /* 🎨 VARIABLES */
 :root {
-  --primary: #305c4c; /* Verde institucional */
-  --accent: #d8b36a;  /* Dorado elegante */
+  --primary: #305c4c;
+  --accent: #d8b36a;
   --text: #222;
   --muted: #666;
   --bg: #f7f7f7;
@@ -16,9 +16,7 @@ SILVIA, CAUCA - Sports & Recreation (Modern, Responsive & Clean)
   font-family: "Poppins", sans-serif;
 }
 
-/* ===========================
-   BASE
-=========================== */
+/* BASE */
 body {
   background-color: var(--bg);
   color: var(--text);
@@ -59,23 +57,33 @@ body {
   display: flex;
   gap: 20px;
   list-style: none;
-  margin: 0;
-  padding: 0;
 }
 
 .nav-links-pro a {
   color: var(--text);
   text-decoration: none;
   font-weight: 500;
-  transition: var(--transition);
+  transition: color 0.3s;
 }
 
 .nav-links-pro a:hover {
   color: var(--primary);
 }
 
+.btn-cta {
+  background: var(--primary);
+  color: #fff !important;
+  padding: 8px 15px;
+  border-radius: var(--radius);
+  transition: var(--transition);
+}
+
+.btn-cta:hover {
+  background: var(--accent);
+}
+
 /* ===========================
-   MENÚ HAMBURGUESA (MÓVIL)
+📱 MENÚ HAMBURGUESA (móvil)
 =========================== */
 .hamburger-menu {
   display: none;
@@ -98,9 +106,6 @@ body {
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   z-index: 999;
-  transform: translateY(-10px);
-  opacity: 0;
-  transition: var(--transition);
 }
 
 .mobile-menu-pro ul {
@@ -122,6 +127,16 @@ body {
 
 .mobile-menu-pro.active {
   display: flex;
+}
+
+/* Animación suave */
+.mobile-menu-pro {
+  transform: translateY(-10px);
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.mobile-menu-pro.active {
   transform: translateY(0);
   opacity: 1;
 }
