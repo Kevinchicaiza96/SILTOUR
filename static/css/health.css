@@ -325,6 +325,13 @@ body {
   box-shadow: var(--shadow);
 }
 
+.hospital-card a,
+.milagrosa-section a,
+.dominga-section a,
+.hospital-detail a {
+  text-decoration: none;
+}
+
 /* ===========================
    ALERTAS RÁPIDAS
 =========================== */
